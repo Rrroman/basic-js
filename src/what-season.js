@@ -52,34 +52,4 @@ module.exports = function getSeason(date) {
   }
   console.log(result);
   return result;
-
-  // switch (month) {
-  //   case 0:
-  //     return 'winter';
-  //   case 1:
-  //     return 'winter';
-  //   case 2:
-  //     return 'winter';
-  //   case 3:
-  //     return 'spring';
-  //   case 4:
-  //     return 'spring';
-  //   case 5:
-  //     return 'spring';
-  //   case 6:
-  //     return 'summer';
-  //   case 7:
-  //     return 'summer';
-  //   case 8:
-  //     return 'summer';
-  //   case 9:
-  //     return 'autumn';
-  //   case 10:
-  //     return 'autumn';
-  //   case 11:
-  //     return 'autumn';
-  // }
-
-  // throw new CustomError('Not implemented');
-  // remove line with error and write your code here
 };
