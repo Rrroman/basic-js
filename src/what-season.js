@@ -11,7 +11,6 @@ module.exports = function getSeason(date) {
 
   let result = '';
 
-  console.log('date is => ' + month);
   switch (month) {
     case 0:
       result = 'winter';
@@ -50,6 +49,5 @@ module.exports = function getSeason(date) {
       result = 'winter';
       break;
   }
-  console.log(result);
   return result;
 };
