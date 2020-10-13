@@ -36,6 +36,7 @@ class VigenereCipheringMachine {
   encrypt(str, code) {
     str = str.toUpperCase();
     code = code.toUpperCase();
+
     if (
       typeof str !== 'string' ||
       typeof code !== 'string' ||
@@ -44,9 +45,11 @@ class VigenereCipheringMachine {
     ) {
       throw new Error('Add valid parameters');
     }
+
     if (this.direct === false) {
-      str = str.split('').reverse('').join();
+      str = str.split('').reverse('').join('');
     }
+
     let sum = null;
     let arrCode = [];
     let arrCipher = [];
@@ -73,7 +76,7 @@ class VigenereCipheringMachine {
       const indexOfStrCharacter = this.arrAbs.indexOf(strElement);
       const indexOfCodeCharacter = this.arrAbs.indexOf(codeElement);
       sum = indexOfStrCharacter + indexOfCodeCharacter;
-      sum;
+
       if (indexOfStrCharacter === -1) {
         arrCipher.push(str[i]);
       } else if (sum < this.max) {
@@ -86,20 +89,13 @@ class VigenereCipheringMachine {
       }
     }
 
-    console.log('encrypt this.direct is => ' + this.direct);
-    console.log('encrypt Str => ' + str);
-    console.log('encrypt Code =>' + code);
-    console.log('encrypt Result => ' + arrCipher.join('').toUpperCase());
-    arrCipher;
     return arrCipher.join('');
-    // return this.direct
-    //   ? arrCipher.join('').toUpperCase()
-    //   : arrCipher.reverse().join('').toUpperCase();
   }
 
   decrypt(str, code) {
     str = str.toUpperCase();
     code = code.toUpperCase();
+
     if (
       typeof str === 'undefined' ||
       typeof code === 'undefined' ||
@@ -110,7 +106,7 @@ class VigenereCipheringMachine {
     }
 
     if (this.direct === false) {
-      str = str.split('').reverse('').join();
+      str = str.split('').reverse('').join('');
     }
 
     let arrCode = [];
@@ -150,47 +146,9 @@ class VigenereCipheringMachine {
         arrCipher.push(this.arrAbs[subtraction]);
       }
     }
-    console.log('decrypt this.direct is => ' + this.direct);
-    console.log('decrypt Str => ' + str);
-    console.log('decrypt Code =>' + code);
-    console.log('decrypt Result => ' + arrCipher.join('').toUpperCase());
+
     return arrCipher.join('');
-    // return this.direct
-    // ? arrCipher.join('').toUpperCase()
-    // : arrCipher.reverse().join('').toUpperCase();
   }
 }
 
-const directMachine = new VigenereCipheringMachine();
-const reverseMachine = new VigenereCipheringMachine(false);
-// QFM#J1Y
-// encrypt Code =>DDQIBPVV
-console.log(directMachine.encrypt('LSN24X', 'POZCIC'));
-// console.log(directMachine.encrypt('AGM24', 'POZCIC'));
-// console.log(reverseMachine.encrypt('k,f', 'fw'));
-// console.log(directMachine.decrypt('p,,,b', 'fw'));
-// console.log(reverseMachine.decrypt('p,,,b', 'fw'));
-// console.log(directMachine.decrypt('UWJJW XAGWLNFM VNNNDXHVWWL :)', 'js'));
-
-// console.log(directMachine.encrypt('Same length key', 'Samelengthkey'));
-
 module.exports = VigenereCipheringMachine;
-
-// encrypt this.direct is => false
-// encrypt Str => ),Y
-// encrypt Code =>PV
-// encrypt Result => ),N
-// decrypt this.direct is => false
-// decrypt Str => ),,,N
-// decrypt Code =>PV
-// decrypt Result => ),,,Y
-
-// 1) Vigenere cipher
-//        functional requirements
-//          double-sided reverse cryptography 2:
-
-//       AssertionError: expected '),,,Y' to equal ')Y'
-//       + expected - actual
-
-//       -),,,Y
-//       +)Y
